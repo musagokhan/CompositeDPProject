@@ -1,0 +1,27 @@
+@startuml
+interface ComponentShow {
+    + showDetails()
+}
+
+class LeafBullet implements ComponentShow {
+    - String type
+    - double range
+    + showDetails()
+}
+
+class CompositeLauncher implements ComponentShow {
+    - int bulletNum
+    - List<ComponentShow> bullets
+    + showDetails()
+    + CompositeLauncher(int, List<ComponentShow>)
+}
+
+class Manager {
+    + main(String[] args)
+}
+
+ComponentShow <|.. LeafBullet
+ComponentShow <|.. CompositeLauncher
+Manager ..> LeafBullet
+Manager ..> CompositeLauncher
+@enduml
